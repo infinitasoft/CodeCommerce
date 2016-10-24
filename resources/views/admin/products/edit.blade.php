@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-md-3">
                 {!! Form::label('category_id','Category:') !!}
-                {!! Form::select('category_id', $categories,$product->id ,['class'=>'form-control']) !!}
+                {!! Form::select('category_id', $categories,$product->category_id ,['class'=>'form-control']) !!}
             </div>
             <div class="col-md-3">
                 {!! Form::label('price','Price:') !!}

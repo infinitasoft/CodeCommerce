@@ -10,7 +10,13 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::get('/','Admin\ProductImagesController@index');
+Route::get('/','Store\StoreController@index');
+Route::get('category/{id}',['as'=>'store.categories.show','uses'=>'Store\CategoriesController@show']);
+Route::get('produto/{id}',['as'=>'store.products.show','uses'=>'Store\ProductsController@show']);
+Route::get('tag/{id}',['as'=>'store.products.tag.show','uses'=>'Store\ProductsController@tagShow']);
+Route::get('cart',['as'=>'store.cart','uses'=>'Store\CartController@index']);
+Route::get('cart/add/{id}',['as'=>'store.cart.add','uses'=>'Store\CartController@add']);
+Route::get('cart/destroy/{id}',['as'=>'store.cart.delete','uses'=>'Store\CartController@destroy']);
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'categories'], function () {
