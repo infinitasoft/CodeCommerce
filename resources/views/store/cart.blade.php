@@ -33,7 +33,10 @@
                                 R$: {{$item['price']}}
                             </td>
                             <td class="cart_quantity">
-                                {{$item['qtd']}}
+                                @if($item['qtd'] >= 2)
+                                    <a href="{{route('store.cart.menos',$k)}}" class="btn"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></a>
+                                @endif
+                                {{$item['qtd']}} <a href="{{route('store.cart.mais',$k)}}" class="btn"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
                             </td>
 
                             <td class="cart_total">

@@ -25,6 +25,19 @@ class Cart
         return $this->items;
     }
 
+    public function removeOne($id, $name, $price)
+    {
+        $this->items += [
+            $id => [
+                'qtd' => isset($this->items[$id]['qtd']) ? $this->items[$id]['qtd']-- : 1,
+                'price' => $price,
+                'name' => $name,
+
+            ]
+        ];
+        return $this->items;
+    }
+
     public function remove($id)
     {
         unset($this->items[$id]);
