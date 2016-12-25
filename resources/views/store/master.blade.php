@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="/"><span>CodeCommerce</span></a>
+                        <a href="/"><span><i class="fa fa-shopping-cart"></i> CodeCommerce</span></a>
                     </div>
 
                 </div>
@@ -56,7 +56,12 @@
                             <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
                             <li><a href="http://commerce.dev:10088/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="http://commerce.dev:10088/cart"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
-                            <li><a href="http://commerce.dev:10088/auth/login"><i class="fa fa-lock"></i> Login</a></li>
+                            @if(Auth::check())
+                                <li>Olá {{Auth::user()->name}}</li>
+                                @else
+                                <li><a href="http://commerce.dev:10088/login"><i class="fa fa-lock"></i> Login</a></li>
+                            @endif
+
                         </ul>
                     </div>
                 </div>

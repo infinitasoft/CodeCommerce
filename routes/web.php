@@ -19,8 +19,9 @@ Route::get('cart/add/{id}',['as'=>'store.cart.add','uses'=>'Store\CartController
 Route::get('cart/mais/{id}',['as'=>'store.cart.mais','uses'=>'Store\CartController@add']);
 Route::get('cart/menos/{id}',['as'=>'store.cart.menos','uses'=>'Store\CartController@removeOne']);
 Route::get('cart/destroy/{id}',['as'=>'store.cart.delete','uses'=>'Store\CartController@destroy']);
+Route::get('checkout/placeOrder',['as'=>'store.chechout.place','uses'=>'Store\CheckoutController@place']);
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware'=>'is_admin'], function () {
     Route::group(['prefix' => 'categories'], function () {
         Route::get('/',['as'=>'admin.categories.index','uses'=>'Admin\CategoriesController@index']);
         Route::get('create',['as'=>'admin.categories.create','uses'=>'Admin\CategoriesController@create']);
@@ -46,3 +47,7 @@ Route::group(['prefix' => 'admin'], function () {
     });
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
